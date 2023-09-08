@@ -28,11 +28,19 @@ def solicitarNomeNota():
     exibirCabecalho()
     lista.append(input(f"Informe o nome do {i+1}º aluno(a): "))
     for j in range(3):
-      nota = float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: "))
+      try:
+        nota = float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: ")) #os nome dos alunos sempre estarão a cada 5 posições na lista, pois, primeiro vem o nome, 3 próximos são as notas e o quarto é a média, e consecutivamente o próximo aluno e seus números.
+      except ValueError:
+        print("Isso não é um número válido. ", end="")
+        nota = -1
       while nota < 0 or nota > 10:
         print("A nota deve ser de 0 a 10. ", end="")
-        nota = float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: "))
-      lista.append(nota)
+        try:
+          nota = float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: "))
+        except ValueError:
+          print("Isso não é um número válido. ", end="")
+          nota = -1
+      lista.append(nota) #vai adicionar a nota correta quando passar do teste a cima
     calcularMedia()
 
 #Função para calcular média das 3 notas (usado o tamanho da lista para
@@ -55,7 +63,7 @@ def definirSituacao(media):
 def exibirResultado():
   exibirCabecalho()
   for i in range(0, 24, 5):
-    print(f"Aluno(a) {lista[i]}, média {lista[i+4]}, {definirSituacao(lista[i+4])}.")
+    print(f"Aluno(a) {lista[i]}, média {lista[i+4]}, {definirSituacao(lista[i+4])}.") #o quarto número de cada aluno é a média, então, este loop pula de 5 em 5 para obter o quarto indice (média) de cada aluno
   print("")
 
 
