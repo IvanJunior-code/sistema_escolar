@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Avaliação TCT do Hall CapacitaTI da Globalhitss.
 
 
@@ -29,7 +28,11 @@ def solicitarNomeNota():
     exibirCabecalho()
     lista.append(input(f"Informe o nome do {i+1}º aluno(a): "))
     for j in range(3):
-      lista.append(float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: ")))
+      nota = float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: "))
+      while nota < 0 or nota > 10:
+        print("A nota deve ser de 0 a 10. ", end="")
+        nota = float(input(f"Informe a {j+1}ª nota de {lista[i*5]}: "))
+      lista.append(nota)
     calcularMedia()
 
 #Função para calcular média das 3 notas (usado o tamanho da lista para
