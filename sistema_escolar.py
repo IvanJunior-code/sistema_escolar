@@ -36,7 +36,7 @@ def solicitarNomeNota():
 # auxiliar na procura da posição das 3 últimas notas mencionadas do
 # respectivo aluno) e criando uma última posição para armazenar a média.
 def calcularMedia():
-  lista.append( (float(lista[len(lista)-3]) + float(lista[len(lista)-2]) + float(lista[len(lista)-1])) / 3 )
+  lista.append( round( (float(lista[len(lista)-3]) + float(lista[len(lista)-2]) + float(lista[len(lista)-1])) / 3, 2 ) )
   return lista[len(lista)-1]
 
 #Função para definir a situação de cada aluno com base na média
